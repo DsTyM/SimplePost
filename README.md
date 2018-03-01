@@ -19,3 +19,12 @@
 Το TeiSteSchedule χρησιμοποιεί τεχνολογίες Web όπως: 
 HTML, CSS, JavaScript, καθώς επίσης και τεχνολογίες 
 Java EE (JSP) μαζί με μια βάση δεδομένων MySQL. 
+
+
+Ο κώδικας του βρίσκεται στον φάκελο: web
+και το script της βάσης MySQL είναι το αρχείο:
+ScheduleDB.sql .
+Καθώς χρησιμοποιεί τεχνολογίες JSP (Java EE), χρειάζεται έναν
+Java EE Application Server (όπως τον GlassFish) ή
+έναν Java Servlet Container (όπως τον Apache Tomcat)
+για να τρέξει η εφαρμογή.
