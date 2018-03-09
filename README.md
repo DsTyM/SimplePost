@@ -2,8 +2,7 @@
 
 ![demo](https://github.com/DsTyM/TeiSteSchedule/blob/master/demo.gif?raw=true)
 
-Το project αυτό δημιουργήθηκε καθαρά για εκμάθηση και σε 
-καμία περίπτωση δεν προορίζεται για εμπορική εφαρμογή.
+Το project αυτό δημιουργήθηκε καθαρά για εκμάθηση.
 
 
 Το TeiSteSchedule είναι ένα Website το οποίο μπορεί να 
