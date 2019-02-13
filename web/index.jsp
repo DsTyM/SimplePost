@@ -1,10 +1,10 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE html >
 <html lang="en" style="text-indent: 40px; background-color: white">
 <head>
     <meta charset="UTF-8">
-    <title>TeiSteSchedule</title>
+    <title>SimplePost</title>
 
     <link rel="stylesheet" type="text/css" href="TStyleOrd1.css"/>
 
@@ -45,7 +45,7 @@
 
 <ul>
     <li style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
-        TeiSteSchedule
+        SimplePost
     </li>
     <li style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="Announcements.jsp">Ανακοινώσεις</a>
@@ -67,8 +67,8 @@
                 <button type="submit" name="logout" value="yes" style="background-color: #218527;
             padding: 0.25em 1em; color: white; font-size: 16px;">Logout
                 </button>
+            </p>
         </form>
-        </p>
 
         <%
                 String logout = request.getParameter("logout");
@@ -85,28 +85,7 @@
     </li>
 </ul>
 
-<h1>Ωρολόγιο Πρόγραμμα Μαθημάτων 3ου & 5ου Εξαμήνου για το</h1>
-<h1>Τμήμα Μηχανικών Πληροφορικής Τ.Ε. του ΤΕΙ Στερεάς Ελλάδας</h1>
-
-<br>
-
-<h2>Διάλεξε Εξάμηνο</h2>
-
-<button style="margin-left: 50px; background-color: #218f28;" onclick="third()">3ο Εξάμηνο</button>
-
-<button style="background-color: #218f28;" onclick="fifth()">5ο Εξάμηνο</button>
-
-<p id="sp1"></p>
-
-<script>
-    function third() {
-        window.location.href = "3ord1.html";
-    }
-
-    function fifth() {
-        window.location.href = "5ord1.html";
-    }
-</script>
+<h1>Σύστημα Διαχείρισης Ανακοινώσεων</h1>
 
 </body>
 </html>
