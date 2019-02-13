@@ -1,14 +1,12 @@
-﻿table, th, td
-{
-    border: 3px solid rgba(19, 0, 209, 0.93);
+﻿table, th, td {
+    border: 3px solid rgba(19, 0, 208, 0.93);
     border-collapse: collapse;
 
     text-align: center;
     vertical-align: top;
 }
 
-button
-{
+button {
     background-color: #8f298b;
     border: none;
     color: white;
@@ -21,8 +19,7 @@ button
     cursor: pointer;
 }
 
-div.box
-{
+div.box {
     font-weight: bold;
     width: 100px;
     text-align: center;
@@ -38,15 +35,13 @@ div.box
     margin: 4px 2px;
 }
 
-a:link, a:visited, a:hover, a:active
-{
+a:link, a:visited, a:hover, a:active {
     color: white;
     text-decoration: none;
 }
 
 
-div.but
-{
+div.but {
     background-color: #218f28;
     border: none;
     color: white;

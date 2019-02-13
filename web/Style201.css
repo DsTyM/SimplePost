@@ -56,15 +56,15 @@ div.newbox {
     border: none;
     padding: 15px 32px;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
 
     background-color: blue;
     color: white;
     cursor: pointer;
 
-    float: right;
-    margin-right: 3%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
     overflow: hidden;
 }
@@ -82,4 +82,23 @@ div.newanounc {
     text-decoration: none;
     font-size: 16px;
     margin: auto;
+}
+
+ul#top_bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e0e0e0;
+}
+
+li#top_bar {
+    float: left;
+}
+
+ul#top_bar, li#top_bar {
+    text-align: center;
+    vertical-align: middle;
+    height: 90px;
+    line-height: 90px;
 }

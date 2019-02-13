@@ -1,15 +1,9 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" %>
-
-<%
-    if (session.getAttribute("username") != null) {
-        response.sendRedirect("index.jsp");
-    }
-%>
-
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
+    <title>About SimplePost</title>
+    <link rel="stylesheet" type="text/css" href="TStyleOrd1.css"/>
     <link rel="stylesheet" type="text/css" href="Style201.css"/>
 </head>
 <body>
@@ -58,29 +52,19 @@
 
 <br><br>
 
-<h1 style="text-align: center; margin: auto; color: #218527;">Log In</h1>
-<br>
+<h1 style="margin-left: 23%;">
+    SimplePost
+</h1>
+<hr style="width: 700px; margin-left: 18%;">
+<h2 style="width: 600px; font-weight: normal; margin-left: 23%;">
+    Το SimplePost είναι ένα σύστημα διαχείρισης ανακοινώσεων.
+    Οι ήδη εγγεγραμμένοι χρήστες μπορούν να συνδεθούν και να επεξεργαστούν μια ανακοίνωση ή να ανεβάσουν μια καινούρια.
+    Οι μη συνδεδεμένοι χρήστες μπορούν να δουν τις ανακοινώσεις που ήδη υπάρχουν.
 
-<div class="loginbox">
-    <form name="loginf" action="LoggedIn.jsp" method="GET">
-        <h3>Username:
-            <input type="text" name="username">
-        </h3>
-        <h3>Password:
-            <input type="password" name="password">
-        </h3>
-        <button type="submit" value="submit">Σύνδεση</button>
-        <%
-            String isLogged = (String) session.getAttribute("isLogged");
-            if (isLogged == null || isLogged.equals("yes")) {
-                // do nothing
-            } else if (isLogged.equals("no")) {
-                out.print("<h4 style = 'color: yellow;'>Λάθος στοιχεία Προσπαθήστε ξανά</h4>");
-                session.setAttribute("isLogged", "yes");
-            }
-        %>
-    </form>
-</div>
+</h2>
 
+<h2 style="width: 600px; font-weight: normal; margin-left: 23%;">
+    Το SimplePost χρησιμοποιεί Web τεχνολογίες όπως: HTML, CSS, JavaScript, JSP Files μαζί με βάση δεδομένων MySQL.
+</h2>
 </body>
 </html>
