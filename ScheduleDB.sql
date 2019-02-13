@@ -1,8 +1,8 @@
-drop database if exists ScheduleDB;
+drop database if exists SimplePostDB;
 
-create database ScheduleDB;
+create database SimplePostDB;
 
-use ScheduleDB;
+use SimplePostDB;
 
 create table Users
 (
