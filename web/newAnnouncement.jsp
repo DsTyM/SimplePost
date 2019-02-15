@@ -87,7 +87,7 @@
     try {
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SimplePostDB",
-                "root", "7896");
+                "root", "");
 
         Statement st = conn.createStatement();
 

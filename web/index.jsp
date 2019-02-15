@@ -45,7 +45,7 @@
                 String username = (String) session.getAttribute("username");
         %>
         <form action="index.jsp">
-            <p style="color: #218527; margin: 0 0 0 0;">Welcome <%= username%>
+            <p style="color: #218527; margin: 0 0 0 0; word-break: normal; width: 100%">Welcome <%= username%>
                 &nbsp
 
                 <button type="submit" name="logout" value="yes" style="background-color: #218527;
@@ -62,6 +62,7 @@
                 } else if (logout.equals("yes")) {
                     session.invalidate();
 
+                    session = request.getSession(true);
                     response.sendRedirect("index.jsp");
                 }
             }
@@ -103,7 +104,7 @@
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SimplePostDB",
-                    "root", "7896");
+                    "root", "");
 
             Statement st = conn.createStatement();
 
