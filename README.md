@@ -1,6 +1,6 @@
 # SimplePost
 
-<!--- ![demo](https://github.com/DsTyM/TeiSteSchedule/blob/master/demo.gif?raw=true) --->
+![demo](https://github.com/DsTyM/TeiSteSchedule/blob/master/demo.gif?raw=true)
 
 Το project αυτό δημιουργήθηκε καθαρά για εκμάθηση.
 
