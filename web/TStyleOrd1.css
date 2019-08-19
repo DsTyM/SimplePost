@@ -19,7 +19,7 @@ button {
     cursor: pointer;
 }
 
-div.box {
+.box {
     font-weight: bold;
     width: 100px;
     text-align: center;
@@ -41,7 +41,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 
-div.but {
+.but {
     background-color: #218f28;
     border: none;
     color: white;

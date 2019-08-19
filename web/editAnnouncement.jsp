@@ -1,5 +1,6 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="java.sql.*" %>
+<%@page import="com.mysql.cj.util.StringUtils" %>
+<%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,17 +11,17 @@
 </head>
 <body>
 
-<ul id="top_bar">
-    <li id="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
+<ul class="top_bar">
+    <li class="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
         SimplePost
     </li>
-    <li id="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
-    <li id="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="About.jsp">About</a>
     </li>
-    <li id="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
+    <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
                 out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
@@ -70,15 +71,20 @@
             // do nothing
         } else {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SimplePostDB",
-                        "root", "");
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
+                        "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+                String dbUsername = "root";
+                String dbPassword = "7896";
+                Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 
                 Statement st = conn.createStatement();
 
-                edit = Integer.parseInt(tEdit);
+                if (StringUtils.isStrictlyNumeric(tEdit)) {
+                    edit = Integer.parseInt(tEdit);
+                }
 
-                ResultSet rs = st.executeQuery("SELECT * FROM Announcements WHERE aid = " + edit);
+                ResultSet rs = st.executeQuery("SELECT * FROM announcements WHERE aid = " + edit);
 
                 if (rs.next()) {
                     eTitle = rs.getString(3);
@@ -87,7 +93,9 @@
 
                 st.close();
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("\n============== Error starts here. ==============");
+                e.printStackTrace();
+                System.out.println("============== Error ends here. ==============\n");
             }
         }
 %>
@@ -114,11 +122,15 @@
 </div>
 <%
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SimplePostDB",
-                    "root", "");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
+                    "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+            String dbUsername = "root";
+            String dbPassword = "7896";
+            Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 
             Statement st = conn.createStatement();
+            PreparedStatement pst;
 
             request.setCharacterEncoding("UTF-8");
 
@@ -134,10 +146,15 @@
             } else {
                 text += "\n";
 
-                st.executeUpdate("insert into Announcements(username, title, textbox) values('admin', '"
-                        + title + "', '" + text + "')");
+                String sql_text = "insert into announcements(username, title, textbox) values ('admin', ?, ?)";
+                pst = conn.prepareStatement(sql_text);
+                pst.setString(1, title); // for the first unknown value (?)
+                pst.setString(2, text);
+                pst.executeUpdate();
 
-                edit = Integer.parseInt(tEdit);
+                if (StringUtils.isStrictlyNumeric(tEdit)) {
+                    edit = Integer.parseInt(tEdit);
+                }
 
                 st.executeUpdate("delete from announcements where aid = " + edit);
 
@@ -146,7 +163,9 @@
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("\n============== Error starts here. ==============");
+            e.printStackTrace();
+            System.out.println("============== Error ends here. ==============\n");
         }
     }
 %>

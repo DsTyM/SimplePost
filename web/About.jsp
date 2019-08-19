@@ -8,17 +8,17 @@
 </head>
 <body>
 
-<ul id="top_bar">
-    <li id="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
+<ul class="top_bar">
+    <li class="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
         SimplePost
     </li>
-    <li id="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
-    <li id="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="About.jsp">About</a>
     </li>
-    <li id="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
+    <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
                 out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
@@ -64,7 +64,7 @@
 </h2>
 
 <h2 style="width: 600px; font-weight: normal; margin-left: 23%;">
-    Το SimplePost χρησιμοποιεί Web τεχνολογίες όπως: HTML, CSS, JavaScript, JSP Files μαζί με βάση δεδομένων MySQL.
+    Το SimplePost χρησιμοποιεί στο back end: Java EE (γνωστή πλέον ως Jakarta EE) μαζί με MySQL, και στο front end: HTML, CSS και JavaScript.
 </h2>
 </body>
 </html>

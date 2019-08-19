@@ -14,17 +14,17 @@
 </head>
 <body>
 
-<ul id="top_bar">
-    <li id="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
+<ul class="top_bar">
+    <li class="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
         SimplePost
     </li>
-    <li id="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
-    <li id="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="About.jsp">About</a>
     </li>
-    <li id="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
+    <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
                 out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
@@ -62,7 +62,7 @@
 <br>
 
 <div class="loginbox">
-    <form name="loginf" action="LoggedIn.jsp" method="GET">
+    <form name="loginf" action="LoggedIn.jsp" method="POST">
         <h3>Username:
             <input type="text" name="username">
         </h3>

@@ -1,5 +1,9 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="java.sql.*" %>
+<%@page import="com.mysql.cj.util.StringUtils" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,17 +31,17 @@
 </head>
 <body>
 
-<ul id="top_bar">
-    <li id="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
+<ul class="top_bar">
+    <li class="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
         SimplePost
     </li>
-    <li id="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
-    <li id="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
+    <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="About.jsp">About</a>
     </li>
-    <li id="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
+    <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
                 out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
@@ -57,9 +61,7 @@
         <%
                 String logout = request.getParameter("logout");
 
-                if (logout == null || logout.equals("")) {
-                    // do nothing
-                } else if (logout.equals("yes")) {
+                if (logout != null && !logout.equals("")) {
                     session.invalidate();
 
                     session = request.getSession(true);
@@ -96,19 +98,20 @@
     }
 %>
 
-<!--To "list-style: none;" afairei tis telitses apo thn lista-->
-
 <ul style="width: 50%; margin: auto; background-color: #e0e0e0;">
     <br>
     <%
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SimplePostDB",
-                    "root", "");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
+                    "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+            String dbUsername = "root";
+            String dbPassword = "7896";
+            Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 
             Statement st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Announcements ORDER BY date DESC");
+            ResultSet rs = st.executeQuery("SELECT * FROM announcements ORDER BY date DESC");
 
             while (rs.next()) {
                 out.print("<li><h3>" + rs.getString(3) + "</h3><p>" + rs.getString(4) +
@@ -134,12 +137,15 @@
 
             request.setCharacterEncoding("UTF-8");
 
-            int delete = Integer.parseInt(request.getParameter("delete"));
+            int delete = 0;
 
-            if (delete == 0) {
-                // do nothing
-            } else {
+            String delete_request = request.getParameter("delete");
 
+            if (StringUtils.isStrictlyNumeric(delete_request)) {
+                delete = Integer.parseInt(delete_request);
+            }
+
+            if (delete != 0) {
                 st.executeUpdate("delete from announcements where aid = " + delete);
 
                 st.close();
@@ -147,7 +153,9 @@
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e) {
-            System.out.print(e.getMessage());
+            System.out.println("\n============== Error starts here. ==============");
+            e.printStackTrace();
+            System.out.println("============== Error ends here. ==============\n");
         }
     %>
 </ul>

@@ -1,4 +1,4 @@
-﻿div.box {
+﻿.box {
     font-weight: bold;
     width: 100px;
     text-align: center;
@@ -19,9 +19,9 @@ a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-div.loginbox {
+.loginbox {
     font-weight: bold;
-    width: 200px;
+    width: 240px;
     text-align: center;
     vertical-align: middle;
 
@@ -47,7 +47,7 @@ button {
     cursor: pointer;
 }
 
-div.newbox {
+.newbox {
     font-weight: bold;
     width: 100px;
     text-align: center;
@@ -69,7 +69,7 @@ div.newbox {
     overflow: hidden;
 }
 
-div.newanounc {
+.newanounc {
     font-weight: bold;
     width: 600px;
     text-align: center;
@@ -84,7 +84,7 @@ div.newanounc {
     margin: auto;
 }
 
-ul#top_bar {
+ul.top_bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -92,11 +92,11 @@ ul#top_bar {
     background-color: #e0e0e0;
 }
 
-li#top_bar {
+li.top_bar {
     float: left;
 }
 
-ul#top_bar, li#top_bar {
+ul.top_bar, li.top_bar {
     text-align: center;
     vertical-align: middle;
     height: 90px;
