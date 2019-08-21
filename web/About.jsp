@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>About SimplePost</title>
-    <link rel="stylesheet" type="text/css" href="TStyleOrd1.css"/>
     <link rel="stylesheet" type="text/css" href="Style201.css"/>
 </head>
 <body>
