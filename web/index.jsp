@@ -152,9 +152,7 @@
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e) {
-            System.out.println("\n============== Error starts here. ==============");
             e.printStackTrace();
-            System.out.println("============== Error ends here. ==============\n");
         }
     %>
 </ul>
