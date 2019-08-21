@@ -30,8 +30,6 @@
 
                 if (logout != null && !logout.equals("")) {
                     session.invalidate();
-
-                    session = request.getSession(true);
                     response.sendRedirect("index.jsp");
                 }
             }
