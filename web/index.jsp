@@ -10,12 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Ανακοινώσεις</title>
-    <link rel="stylesheet" type="text/css" href="Style201.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main-style.css"/>
 
     <style type="text/css">
         button {
             padding: 0.25em 1em;
-            font-size: 16px;
             margin: 0.25em;
         }
 
@@ -24,7 +23,7 @@
             width: 95%
         }
 
-        form, button {
+        form {
             display: inline-block;
         }
     </style>
@@ -39,12 +38,12 @@
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
     <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
-        <a style="color: dimgray;" href="About.jsp">About</a>
+        <a style="color: dimgray;" href="about.jsp">About</a>
     </li>
     <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
-                out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
+                out.print("<a style='color: #218527;' href='login.jsp'>Log In</a>");
             } else {
                 String username = (String) session.getAttribute("username");
         %>
@@ -86,7 +85,7 @@
 %>
 <br><br>
 <div class="newbox">
-    <a href="newAnnouncement.jsp">Νέα Ανακοίνωση</a>
+    <a href="new-announcement.jsp">Νέα Ανακοίνωση</a>
 </div>
 
 <br><br>
@@ -122,7 +121,7 @@
     %>
     <p style="font-weight: bold; display: inline;">Edit:</p>
 
-    <form action="editAnnouncement.jsp">
+    <form action="edit-announcement.jsp">
         <button type="submit" name="edit" value="<%=rs.getString(1)%>">Επεξεργασία Ανακοίνωσης</button>
     </form>
     <form action="index.jsp">

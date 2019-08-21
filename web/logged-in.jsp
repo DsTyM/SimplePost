@@ -38,7 +38,7 @@
             System.out.println("Αποτυχής Σύνδεση.");
             st.close();
             session.setAttribute("isLogged", "no");
-            response.sendRedirect("Login.jsp");
+            response.sendRedirect("login.jsp");
         }
     } catch (Exception e) {
         System.out.println("\n============== Error starts here. ==============");

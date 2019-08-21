@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Νέα Ανακοίνωση</title>
-    <link rel="stylesheet" type="text/css" href="Style201.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main-style.css"/>
 </head>
 <body>
 
@@ -20,12 +20,12 @@
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>
     </li>
     <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
-        <a style="color: dimgray;" href="About.jsp">About</a>
+        <a style="color: dimgray;" href="about.jsp">About</a>
     </li>
     <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
-                out.print("<a style='color: #218527;' href='Login.jsp'>Log In</a>");
+                out.print("<a style='color: #218527;' href='login.jsp'>Log In</a>");
             } else {
                 String username = (String) session.getAttribute("username");
         %>
@@ -64,7 +64,7 @@
 <br>
 
 <div class='newanounc'>
-    <form action="newAnnouncement.jsp">
+    <form action="new-announcement.jsp">
         Τίτλος:
         <br>
         <input type='text' name='title' value="">
