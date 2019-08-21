@@ -57,7 +57,7 @@
             }
         }
 %>
-<h1 style="text-align: center; margin: auto; color: #218527;"> Επεξεργασία Ανακοίνωσης</h1>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;"> Επεξεργασία Ανακοίνωσης</p>
 <br>
 
 <div class='newanounc'>

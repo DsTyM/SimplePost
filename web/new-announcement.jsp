@@ -20,7 +20,7 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-<h1 style="text-align:center; margin: auto; color: #218527;"> Νέα Ανακοίνωση</h1>
+<p class="big-text" style="text-align:center; margin: auto; color: #218527;"> Νέα Ανακοίνωση</p>
 <br>
 
 <div class='newanounc'>

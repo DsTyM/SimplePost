@@ -11,9 +11,9 @@
 
 <br><br>
 
-<h1 style="margin-left: 23%;">
+<p class="big-text" style="margin-left: 23%;">
     SimplePost
-</h1>
+</p>
 <hr style="width: 700px; margin-left: 18%;">
 <h2 style="width: 600px; font-weight: normal; margin-left: 23%;">
     Το SimplePost είναι ένα σύστημα διαχείρισης ανακοινώσεων.

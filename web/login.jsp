@@ -18,7 +18,7 @@
 
 <br><br>
 
-<h1 style="text-align: center; margin: auto; color: #218527;">Log In</h1>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Log In</p>
 <br>
 
 <div class="loginbox">

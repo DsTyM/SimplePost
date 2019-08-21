@@ -44,7 +44,7 @@
 
 <br><br><br><br>
 
-<h1 style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις</h1>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις</p>
 <br>
 
 <%
@@ -57,7 +57,7 @@
 
 <br><br>
 
-<h1 style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις (Admin Mode)</h1>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις (Admin Mode)</p>
 <br>
 
 <%

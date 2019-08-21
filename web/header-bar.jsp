@@ -1,6 +1,6 @@
 ﻿<ul class="top_bar">
-    <li class="top_bar" style="margin-left: 100px; color: #218f28; font-size: 2em; font-weight: bold;">
-        SimplePost
+    <li class="top_bar" style="margin-left: 100px; color: #218f28;">
+        <h1 style="margin:0; padding:0; font-weight: bold;">SimplePost</h1>
     </li>
     <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="index.jsp">Ανακοινώσεις</a>

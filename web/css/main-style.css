@@ -107,3 +107,8 @@ p {
     word-break: break-all;
     width: 95%
 }
+
+.big-text {
+    font-size: 2em;
+    font-weight: bolder;
+}
