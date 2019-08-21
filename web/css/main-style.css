@@ -102,3 +102,8 @@ ul.top_bar, li.top_bar {
     height: 90px;
     line-height: 90px;
 }
+
+p {
+    word-break: break-all;
+    width: 95%
+}
