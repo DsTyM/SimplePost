@@ -1,6 +1,5 @@
 package com.dstym.model;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,12 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDbHelper {
-    private DataSource dataSource;
-
-    public UserDbHelper(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
     public List<User> getUsers() throws Exception {
         List<User> users = new ArrayList<>();
 
@@ -23,33 +16,41 @@ public class UserDbHelper {
 
         try {
             // get a connection
-            conn = dataSource.getConnection();
+            conn = DbHelper.getConnection();
 
-            // create sql statement
-            String sql = "select * from users";
+            if(conn != null) {
+                // create sql statement
+                String sql = "select * from users";
 
-            st = conn.createStatement();
+                st = conn.createStatement();
 
-            // execute query
-            rs = st.executeQuery(sql);
+                // execute query
+                rs = st.executeQuery(sql);
 
-            // process result set
-            while (rs.next()) {
+                // process result set
+                while (rs.next()) {
 
-                // retrieve data from result set row
-                int id = rs.getInt("uid");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                String type = rs.getString("type");
+                    // retrieve data from result set row
+                    int id = rs.getInt("uid");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    String type = rs.getString("type");
 
-                // create new student object
-                User user = new User(id, username, password, type);
+                    // create new student object
+                    User user = new User(id, username, password, type);
 
-                // add it to the list of users
-                users.add(user);
+                    // add it to the list of users
+                    users.add(user);
+                }
+
+                return users;
             }
 
-            return users;
+            return null;
+        } catch(Exception e) {
+            e.printStackTrace();
+
+            return null;
         } finally {
             close(conn, st, rs);
         }
@@ -66,7 +67,6 @@ public class UserDbHelper {
             }
 
             if (conn != null) {
-                // return it to connection pool
                 conn.close();
             }
         } catch (Exception exc) {

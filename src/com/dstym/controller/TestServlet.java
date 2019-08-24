@@ -1,12 +1,12 @@
 package com.dstym.controller;
 
-import javax.annotation.Resource;
+import com.dstym.model.DbHelper;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -15,11 +15,6 @@ import java.sql.Statement;
 
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
-
-    // Define datasource/connection pool for Resource Injection
-    @Resource(name="jdbc/simple_post")
-    private DataSource dataSource;
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -35,19 +30,21 @@ public class TestServlet extends HttpServlet {
         ResultSet myRs = null;
 
         try {
-            myConn = dataSource.getConnection();
+            myConn = DbHelper.getConnection();
 
-            // Step 3:  Create a SQL statements
-            String sql = "select * from users";
-            myStmt = myConn.createStatement();
+            if(myConn != null) {
+                // Step 3:  Create a SQL statements
+                String sql = "select * from users";
+                myStmt = myConn.createStatement();
 
-            // Step 4:  Execute SQL query
-            myRs = myStmt.executeQuery(sql);
+                // Step 4:  Execute SQL query
+                myRs = myStmt.executeQuery(sql);
 
-            // Step 5:  Process the result set
-            while (myRs.next()) {
-                String username = myRs.getString("username");
-                out.println(username);
+                // Step 5:  Process the result set
+                while (myRs.next()) {
+                    String username = myRs.getString("username");
+                    out.println(username);
+                }
             }
         } catch (Exception exc) {
             exc.printStackTrace();

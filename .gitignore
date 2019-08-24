@@ -1,3 +1,6 @@
 /.idea
 -SimplePost-.iml
 /out
+/web/META-INF
+/web/WEB-INF/classes
+/web/WEB-INF/lib
