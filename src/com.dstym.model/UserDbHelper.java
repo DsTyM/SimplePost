@@ -14,8 +14,8 @@ public class UserDbHelper {
         this.dataSource = dataSource;
     }
 
-    public List<User> getStudents() throws Exception {
-        List<User> students = new ArrayList<>();
+    public List<User> getUsers() throws Exception {
+        List<User> users = new ArrayList<>();
 
         Connection conn = null;
         Statement st = null;
@@ -37,19 +37,19 @@ public class UserDbHelper {
             while (rs.next()) {
 
                 // retrieve data from result set row
-                int id = rs.getInt("id");
-                String firstName = rs.getString("first_name");
-                String lastName = rs.getString("last_name");
-                String email = rs.getString("email");
+                int id = rs.getInt("uid");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String type = rs.getString("type");
 
                 // create new student object
-                User tempStudent = new User(id, firstName, lastName, email);
+                User user = new User(id, username, password, type);
 
-                // add it to the list of students
-                students.add(tempStudent);
+                // add it to the list of users
+                users.add(user);
             }
 
-            return students;
+            return users;
         } finally {
             close(conn, st, rs);
         }
