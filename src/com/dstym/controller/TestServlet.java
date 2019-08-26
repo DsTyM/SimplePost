@@ -1,5 +1,7 @@
 package com.dstym.controller;
 
+import com.dstym.model.Post;
+import com.dstym.model.PostDbHelper;
 import com.dstym.model.User;
 import com.dstym.model.UserDbHelper;
 
@@ -24,13 +26,22 @@ public class TestServlet extends HttpServlet {
         response.setContentType("text/plain");
 
         try {
-            UserDbHelper userDbHelper = new UserDbHelper();
+//            UserDbHelper userDbHelper = new UserDbHelper();
+//
+//            List<User> users = userDbHelper.getUsers();
+//
+//            // Process the result set
+//            for (User user : users) {
+//                out.println(user.getUsername());
+//            }
 
-            List<User> users = userDbHelper.getUsers();
+            PostDbHelper postDbHelper = new PostDbHelper();
 
-            //Process the result set
-            for (User user : users) {
-                out.println(user.getUsername());
+            List<Post> posts = postDbHelper.getPosts();
+
+            for (Post post : posts) {
+                System.out.println(post.getTextBox());
+                System.out.println();
             }
         } catch (Exception exc) {
             exc.printStackTrace();
