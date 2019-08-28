@@ -1,7 +1,7 @@
 package com.dstym.controller;
 
-import com.dstym.model.User;
-import com.dstym.model.UserDbHelper;
+import com.dstym.model.Post;
+import com.dstym.model.PostDbHelper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/UserControllerServlet")
-public class UserControllerServlet extends HttpServlet {
-    private UserDbHelper userDbHelper;
+@WebServlet("/HPTestServlet")
+public class HPTestServlet extends HttpServlet {
+    private PostDbHelper postDbHelper;
 
     @Override
     public void init() throws ServletException {
         super.init();
 
         try {
-            userDbHelper = new UserDbHelper();
+            postDbHelper = new PostDbHelper();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,22 +32,21 @@ public class UserControllerServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // list the users ... in mvc fashion
         try {
-            listUsers(request, response);
+            listPosts(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void listUsers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<User> users = userDbHelper.getUsers();
+    private void listPosts(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Post> posts = postDbHelper.getPosts();
 
         // add users to the request
-        request.setAttribute("USERS_LIST", users);
+        request.setAttribute("POSTS", posts);
 
         // send to JSP page (view)
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/list-users.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/homepage.jsp");
         dispatcher.forward(request, response);
     }
 }

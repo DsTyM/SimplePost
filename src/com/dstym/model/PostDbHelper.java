@@ -20,7 +20,7 @@ public class PostDbHelper {
             conn = DbHelper.getConnection();
 
             if (conn != null) {
-                String sql = "select * from announcements";
+                String sql = "select * from announcements order by date desc";
 
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);

@@ -24,7 +24,6 @@
                 </button>
             </p>
         </form>
-
         <%
                 String logout = request.getParameter("logout");
 

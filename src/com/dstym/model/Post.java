@@ -1,5 +1,6 @@
 package com.dstym.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Post {
@@ -51,6 +52,11 @@ public class Post {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getDateAsText() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formatter.format(date).substring(0, 16);
     }
 
     public void setDate(Date date) {
