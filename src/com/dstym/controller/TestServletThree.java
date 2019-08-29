@@ -22,7 +22,12 @@ public class TestServletThree extends HttpServlet {
 //        Post post1 = new Post("admin", "titloras1", "This is a text test!!");
 //        postDbHelper.createPost(post1);
 
-        Post post2 = postDbHelper.getPost(12);
-        System.out.println(post2);
+//        Post post2 = postDbHelper.getPost(12);
+//        System.out.println(post2);
+
+//        Post post3 = new Post(12, "titloras69", "This is a complete garbage test!!");
+//        postDbHelper.updatePost(post3);
+
+//        postDbHelper.deletePost(14);
     }
 }

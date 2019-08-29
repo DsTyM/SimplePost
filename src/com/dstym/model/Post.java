@@ -24,6 +24,12 @@ public class Post {
         this.textBox = textBox;
     }
 
+    public Post(int id, String title, String textBox) {
+        this.id = id;
+        this.title = title;
+        this.textBox = textBox;
+    }
+
     public int getId() {
         return id;
     }

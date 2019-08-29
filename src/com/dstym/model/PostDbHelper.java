@@ -111,4 +111,38 @@ public class PostDbHelper {
             DbHelper.close(conn, st, rs);
         }
     }
+
+    public void updatePost(Post post) {
+        try {
+            conn = DbHelper.getConnection();
+
+            String sql = "update announcements set title = ?, textbox = ? where aid = " + post.getId();
+            if (conn != null) {
+                pst = conn.prepareStatement(sql);
+            }
+            pst.setString(1, post.getTitle());
+            pst.setString(2, post.getTextBox());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbHelper.close(conn, st, rs);
+            DbHelper.closePreparedStatement(pst);
+        }
+    }
+
+    public void deletePost(int postId) {
+        try {
+            conn = DbHelper.getConnection();
+
+            if (conn != null) {
+                st = conn.createStatement();
+                st.executeUpdate("delete from announcements where aid = " + postId);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbHelper.close(conn, st, rs);
+        }
+    }
 }

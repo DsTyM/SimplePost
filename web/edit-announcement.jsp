@@ -97,11 +97,7 @@
 
             tEdit = request.getParameter("edit2");
 
-            if (title == null || text == null || tEdit == null) {
-                // do nothing
-            } else if (title.length() == 0 || text.length() == 0 || tEdit.length() == 0) {
-                // do nothing
-            } else {
+            if (title != null && title.length() != 0 && text != null && text.length() != 0 && tEdit != null && tEdit.length() != 0) {
                 text += "\n";
 
                 String sql_text = "insert into announcements(username, title, textbox) values ('admin', ?, ?)";
