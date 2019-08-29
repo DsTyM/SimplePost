@@ -59,11 +59,7 @@
         String title = request.getParameter("title");
         String text = request.getParameter("text");
 
-        if (title == null || text == null) {
-            // do nothing
-        } else if (title.length() == 0 || text.length() == 0) {
-            // do nothing
-        } else {
+        if (title != null && text != null && title.length() != 0 && text.length() != 0) {
             text += "\n";
 
             String sql_text = "insert into announcements(username, title, textbox) values ('admin', ?, ?)";

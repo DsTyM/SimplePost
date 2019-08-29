@@ -46,7 +46,7 @@ public class User {
     }
 
     @java.lang.Override
-    public java.lang.String toString() {
+    public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +

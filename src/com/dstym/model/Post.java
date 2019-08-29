@@ -18,6 +18,12 @@ public class Post {
         this.date = date;
     }
 
+    public Post(String username, String title, String textBox) {
+        this.username = username;
+        this.title = title;
+        this.textBox = textBox;
+    }
+
     public int getId() {
         return id;
     }
@@ -61,5 +67,16 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @java.lang.Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", title='" + title + '\'' +
+                ", textBox='" + textBox + '\'' +
+                ", date='" + getDateAsText() + '\'' +
+                '}';
     }
 }

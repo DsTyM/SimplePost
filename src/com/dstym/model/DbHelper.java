@@ -1,9 +1,6 @@
 package com.dstym.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DbHelper {
     public static Connection getConnection() {
@@ -34,6 +31,16 @@ public class DbHelper {
 
             if (conn != null) {
                 conn.close();
+            }
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+    }
+
+    public static void closePreparedStatement(PreparedStatement pst) {
+        try {
+            if (pst != null) {
+                pst.close();
             }
         } catch (Exception exc) {
             exc.printStackTrace();
