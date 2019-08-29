@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDbHelper {
+    Connection conn = null;
+    Statement st = null;
+    ResultSet rs = null;
+
     public List<User> getUsers() throws Exception {
         List<User> users = new ArrayList<>();
-
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
 
         try {
             conn = DbHelper.getConnection();
@@ -45,6 +45,31 @@ public class UserDbHelper {
             e.printStackTrace();
 
             return null;
+        } finally {
+            DbHelper.close(conn, st, rs);
+        }
+    }
+
+    public Boolean validateUser(User user) {
+        try {
+            conn = DbHelper.getConnection();
+
+            if (conn != null) {
+                String sql = "select * from users where username = '" + user.getUsername() + "'";
+
+                st = conn.createStatement();
+                rs = st.executeQuery(sql);
+
+                rs.next();
+                String password = rs.getString("password");
+
+                return password.equals(user.getPassword());
+            }
+
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         } finally {
             DbHelper.close(conn, st, rs);
         }
