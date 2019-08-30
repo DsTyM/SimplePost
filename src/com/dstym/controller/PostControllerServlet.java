@@ -17,6 +17,11 @@ public class PostControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
+        String username = "";
+        if (request.getSession(false).getAttribute("username") != null) {
+            username = (String) request.getSession(false).getAttribute("username");
+        }
+
         int postId = 0;
 
         PostDbHelper postDbHelper = new PostDbHelper();
@@ -25,6 +30,8 @@ public class PostControllerServlet extends HttpServlet {
         String deleteRequest = request.getParameter("delete");
         String editRequest = request.getParameter("edit");
         String saveEditedRequest = request.getParameter("saveEdited");
+        String createRequest = request.getParameter("create");
+        String saveCreatedRequest = request.getParameter("saveCreated");
 
         if (deleteRequest != null && deleteRequest.length() != 0) {
             if (StringUtils.isStrictlyNumeric(deleteRequest)) {
@@ -58,6 +65,19 @@ public class PostControllerServlet extends HttpServlet {
 
                 post = new Post(postId, title, textBox);
                 postDbHelper.updatePost(post);
+            }
+        } else if (createRequest != null && createRequest.length() != 0) {
+            if(createRequest.equals("yes")) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/new-announcement.jsp");
+                dispatcher.forward(request, response);
+            }
+        } else if (saveCreatedRequest != null && saveCreatedRequest.length() != 0) {
+            if (saveCreatedRequest.equals("yes")) {
+                String title = request.getParameter("title");
+                String textBox = request.getParameter("text");
+
+                post = new Post(username, title, textBox);
+                postDbHelper.createPost(post);
             }
         }
 

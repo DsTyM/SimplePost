@@ -1,7 +1,4 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +21,7 @@
 <br>
 
 <div class='newanounc'>
-    <form action="new-announcement.jsp">
+    <form action="PostControllerServlet" method="post">
         Τίτλος:
         <br>
         <input type='text' name='title' value="">
@@ -36,44 +33,10 @@
 
         <br><br>
 
-        <button type="submit" value="submit"> Δημοσίευση</button>
+        <button type="submit" name="saveCreated" value="yes"> Δημοσίευση</button>
     </form>
 </div>
 <%
-    }
-%>
-
-<%
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
-                "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-        String dbUsername = "root";
-        String dbPassword = "7896";
-        Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-
-        PreparedStatement st;
-
-        request.setCharacterEncoding("UTF-8");
-
-        String title = request.getParameter("title");
-        String text = request.getParameter("text");
-
-        if (title != null && text != null && title.length() != 0 && text.length() != 0) {
-            text += "\n";
-
-            String sql_text = "insert into announcements(username, title, textbox) values ('admin', ?, ?)";
-            st = conn.prepareStatement(sql_text);
-            st.setString(1, title); // for the first unknown value (?)
-            st.setString(2, text);
-            st.executeUpdate();
-
-            st.close();
-
-            response.sendRedirect("/");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
     }
 %>
 

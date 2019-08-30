@@ -84,7 +84,7 @@ button {
     margin: auto;
 }
 
-ul.top_bar {
+ul.top-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -92,11 +92,11 @@ ul.top_bar {
     background-color: #e0e0e0;
 }
 
-li.top_bar {
+li.top-bar {
     float: left;
 }
 
-ul.top_bar, li.top_bar {
+ul.top-bar, li.top-bar {
     text-align: center;
     vertical-align: middle;
     height: 90px;

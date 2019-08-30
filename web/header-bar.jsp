@@ -1,14 +1,14 @@
-﻿<ul class="top_bar">
-    <li class="top_bar" style="margin-left: 100px; color: #218f28;">
+﻿<ul class="top-bar">
+    <li class="top-bar" style="margin-left: 100px; color: #218f28;">
         <h1 style="margin:0; padding:0; font-weight: bold;">SimplePost</h1>
     </li>
-    <li class="top_bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
+    <li class="top-bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="/">Ανακοινώσεις</a>
     </li>
-    <li class="top_bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
+    <li class="top-bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="about.jsp">About</a>
     </li>
-    <li class="top_bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
+    <li class="top-bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
                 out.print("<a style='color: #218527;' href='login.jsp'>Log In</a>");

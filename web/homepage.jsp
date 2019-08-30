@@ -48,8 +48,10 @@
 } else {
 %>
 <br><br>
-<div class="newbox">
-    <a href="new-announcement.jsp">Νέα Ανακοίνωση</a>
+<div class="newbox" style="width: 120px">
+    <form action="PostControllerServlet" method="post">
+        <button style="background-color: blue;" type="submit" name="create" value="yes">Νέα Ανακοίνωση</button>
+    </form>
 </div>
 
 <br><br>
