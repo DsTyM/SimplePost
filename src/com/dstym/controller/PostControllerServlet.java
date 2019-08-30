@@ -14,17 +14,26 @@ import java.io.IOException;
 
 @WebServlet("/PostControllerServlet")
 public class PostControllerServlet extends HttpServlet {
+    private String username;
+    private int postId;
+    private PostDbHelper postDbHelper;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+
+        username = "";
+
+        postId = 0;
+        postDbHelper = new PostDbHelper();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        String username = "";
         if (request.getSession(false).getAttribute("username") != null) {
             username = (String) request.getSession(false).getAttribute("username");
         }
-
-        int postId = 0;
-
-        PostDbHelper postDbHelper = new PostDbHelper();
 
         String deleteRequest = request.getParameter("delete");
         String editRequest = request.getParameter("edit");
