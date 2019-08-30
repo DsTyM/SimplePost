@@ -33,7 +33,7 @@
             session.setAttribute("username", username);
             System.out.println("Someone Logged In");
             st.close();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/");
         } else {
             System.out.println("Αποτυχής Σύνδεση.");
             st.close();

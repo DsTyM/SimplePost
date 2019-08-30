@@ -1,9 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="com.dstym.model.DbHelper" %>
-<%@ page import="com.dstym.model.Post" %>
-<%@ page import="com.mysql.cj.util.StringUtils" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
+<%@page import="com.dstym.model.Post" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -37,7 +33,7 @@
         session.invalidate();
 
         session = request.getSession(true);
-        response.sendRedirect("homepage.jsp");
+        response.sendRedirect("/");
     }
 
     if (session.getAttribute("username") == null) {
@@ -68,61 +64,31 @@
 <ul style="width: 50%; margin: auto; background-color: #e0e0e0;">
     <br>
     <%
-        try {
-            Connection conn = DbHelper.getConnection();
+        List<Post> posts = (List<Post>) request.getAttribute("POSTS");
 
-            assert conn != null;
-            Statement st = conn.createStatement();
+        for (Post post : posts) {
+            out.print("<li><h3>" + post.getTitle() + "</h3><p>" + post.getTextBox() +
+                    "</p><p style='font-weight: bold;'>" + post.getUsername() +
+                    ", " + post.getDateAsText() + "</p>");
 
-            List<Post> posts = (List<Post>) request.getAttribute("POSTS");
-
-            for (Post post : posts) {
-                out.print("<li><h3>" + post.getTitle() + "</h3><p>" + post.getTextBox() +
-                        "</p><p style='font-weight: bold;'>" + post.getUsername() +
-                        ", " + post.getDateAsText() + "</p>");
-
-                if (session.getAttribute("username") != null) {
+            if (session.getAttribute("username") != null) {
     %>
     <p style="font-weight: bold; display: inline;">Edit:</p>
 
-    <form action="edit-announcement.jsp">
+    <form action="PostControllerServlet" method="get">
         <button type="submit" name="edit" value="<%=post.getId()%>">Επεξεργασία Ανακοίνωσης</button>
-    </form>
-    <form action="index.jsp">
         <button type="submit" name="delete" value="<%=post.getId()%>">Διαγραφή Ανακοίνωσης</button>
     </form>
-    <br>
+    <br><br>
+    </li>
     <%
-                }
+        }
+    %>
 
-                out.print("<br></li>");
-            }
+    <br>
+    </li>
 
-            request.setCharacterEncoding("UTF-8");
-
-            /*
-                here i probably mean if delete_id is bugger than 0
-                that means that I have pressed the delete button, so
-                it has to delete the post
-             */
-
-            int delete = 0;
-
-            String delete_request = request.getParameter("delete");
-
-            if (StringUtils.isStrictlyNumeric(delete_request)) {
-                delete = Integer.parseInt(delete_request);
-            }
-
-            if (delete != 0) {
-                st.executeUpdate("delete from announcements where aid = " + delete);
-
-                st.close();
-
-                response.sendRedirect("homepage.jsp");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    <%
         }
     %>
 </ul>

@@ -16,7 +16,7 @@
 <br><br>
 <%
     if (session.getAttribute("username") == null) {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/");
     } else {
 
         String eTitle = "";
@@ -114,7 +114,7 @@
 
                 st.close();
 
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("/");
             }
         } catch (Exception e) {
             e.printStackTrace();

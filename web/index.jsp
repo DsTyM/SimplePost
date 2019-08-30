@@ -36,7 +36,7 @@
         session.invalidate();
 
         session = request.getSession(true);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/");
     }
 
     if (session.getAttribute("username") == null) {
@@ -91,7 +91,7 @@
     <form action="edit-announcement.jsp">
         <button type="submit" name="edit" value="<%=rs.getString(1)%>">Επεξεργασία Ανακοίνωσης</button>
     </form>
-    <form action="index.jsp">
+    <form action="/">
         <button type="submit" name="delete" value="<%=rs.getString(1)%>">Διαγραφή Ανακοίνωσης</button>
     </form>
     <br>
@@ -116,7 +116,7 @@
 
                 st.close();
 
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("/");
             }
         } catch (Exception e) {
             e.printStackTrace();

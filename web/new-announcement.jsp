@@ -17,7 +17,7 @@
 <br><br>
 <%
     if (session.getAttribute("username") == null) {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/");
     } else {
 %>
 <p class="big-text" style="text-align:center; margin: auto; color: #218527;"> Νέα Ανακοίνωση</p>
@@ -70,7 +70,7 @@
 
             st.close();
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/");
         }
     } catch (Exception e) {
         e.printStackTrace();
