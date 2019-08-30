@@ -20,7 +20,7 @@ public class PostControllerServlet extends HttpServlet {
         int postId = 0;
 
         PostDbHelper postDbHelper = new PostDbHelper();
-        Post post = null;
+        Post post;
 
         String deleteRequest = request.getParameter("delete");
         String editRequest = request.getParameter("edit");
