@@ -5,6 +5,6 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>HPTestServlet</welcome-file>
+        <welcome-file>HomepageControllerServlet</welcome-file>
     </welcome-file-list>
 </web-app>

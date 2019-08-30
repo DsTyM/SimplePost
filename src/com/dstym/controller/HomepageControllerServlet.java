@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/HPTestServlet")
-public class HPTestServlet extends HttpServlet {
+@WebServlet("/HomepageControllerServlet")
+public class HomepageControllerServlet extends HttpServlet {
     private PostDbHelper postDbHelper;
 
     @Override

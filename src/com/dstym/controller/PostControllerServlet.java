@@ -25,7 +25,6 @@ public class PostControllerServlet extends HttpServlet {
         int postId = 0;
 
         PostDbHelper postDbHelper = new PostDbHelper();
-        Post post;
 
         String deleteRequest = request.getParameter("delete");
         String editRequest = request.getParameter("edit");
@@ -34,51 +33,15 @@ public class PostControllerServlet extends HttpServlet {
         String saveCreatedRequest = request.getParameter("saveCreated");
 
         if (deleteRequest != null && deleteRequest.length() != 0) {
-            if (StringUtils.isStrictlyNumeric(deleteRequest)) {
-                postId = Integer.parseInt(deleteRequest);
-            }
-
-            if (postId != 0) {
-                postDbHelper.deletePost(postId);
-            }
+            deletePost(postId, postDbHelper, deleteRequest);
         } else if (editRequest != null && editRequest.length() != 0) {
-            if (StringUtils.isStrictlyNumeric(editRequest)) {
-                postId = Integer.parseInt(editRequest);
-            }
-
-            if (postId != 0) {
-                post = postDbHelper.getPost(postId);
-
-                request.setAttribute("POST", post);
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/edit-announcement.jsp");
-                dispatcher.forward(request, response);
-            }
+            serveEditPost(request, response, postId, postDbHelper, editRequest);
         } else if (saveEditedRequest != null && saveEditedRequest.length() != 0) {
-            if (StringUtils.isStrictlyNumeric(saveEditedRequest)) {
-                postId = Integer.parseInt(saveEditedRequest);
-            }
-
-            if (postId != 0) {
-                String title = request.getParameter("title");
-                String textBox = request.getParameter("text");
-
-                post = new Post(postId, title, textBox);
-                postDbHelper.updatePost(post);
-            }
+            saveEditedPost(request, postId, postDbHelper, saveEditedRequest);
         } else if (createRequest != null && createRequest.length() != 0) {
-            if(createRequest.equals("yes")) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/new-announcement.jsp");
-                dispatcher.forward(request, response);
-            }
+            serveCreatePost(request, response, createRequest);
         } else if (saveCreatedRequest != null && saveCreatedRequest.length() != 0) {
-            if (saveCreatedRequest.equals("yes")) {
-                String title = request.getParameter("title");
-                String textBox = request.getParameter("text");
-
-                post = new Post(username, title, textBox);
-                postDbHelper.createPost(post);
-            }
+            saveCreatedPost(request, username, postDbHelper, saveCreatedRequest);
         }
 
         response.sendRedirect("/");
@@ -86,5 +49,64 @@ public class PostControllerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+
+    private void saveCreatedPost(HttpServletRequest request, String username, PostDbHelper postDbHelper, String saveCreatedRequest) {
+        Post post;
+        if (saveCreatedRequest.equals("yes")) {
+            String title = request.getParameter("title");
+            String textBox = request.getParameter("text");
+
+            post = new Post(username, title, textBox);
+            postDbHelper.createPost(post);
+        }
+    }
+
+    private void serveCreatePost(HttpServletRequest request, HttpServletResponse response, String createRequest) throws ServletException, IOException {
+        if (createRequest.equals("yes")) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/new-announcement.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    private void saveEditedPost(HttpServletRequest request, int postId, PostDbHelper postDbHelper, String saveEditedRequest) {
+        Post post;
+        if (StringUtils.isStrictlyNumeric(saveEditedRequest)) {
+            postId = Integer.parseInt(saveEditedRequest);
+        }
+
+        if (postId != 0) {
+            String title = request.getParameter("title");
+            String textBox = request.getParameter("text");
+
+            post = new Post(postId, title, textBox);
+            postDbHelper.updatePost(post);
+        }
+    }
+
+    private void serveEditPost(HttpServletRequest request, HttpServletResponse response, int postId, PostDbHelper postDbHelper, String editRequest) throws ServletException, IOException {
+        Post post;
+        if (StringUtils.isStrictlyNumeric(editRequest)) {
+            postId = Integer.parseInt(editRequest);
+        }
+
+        if (postId != 0) {
+            post = postDbHelper.getPost(postId);
+
+            request.setAttribute("POST", post);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/edit-announcement.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    private void deletePost(int postId, PostDbHelper postDbHelper, String deleteRequest) {
+        if (StringUtils.isStrictlyNumeric(deleteRequest)) {
+            postId = Integer.parseInt(deleteRequest);
+        }
+
+        if (postId != 0) {
+            postDbHelper.deletePost(postId);
+        }
     }
 }
