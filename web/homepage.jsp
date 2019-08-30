@@ -75,7 +75,7 @@
     %>
     <p style="font-weight: bold; display: inline;">Edit:</p>
 
-    <form action="PostControllerServlet" method="get">
+    <form action="PostControllerServlet" method="post">
         <button type="submit" name="edit" value="<%=post.getId()%>">Επεξεργασία Ανακοίνωσης</button>
         <button type="submit" name="delete" value="<%=post.getId()%>">Διαγραφή Ανακοίνωσης</button>
     </form>

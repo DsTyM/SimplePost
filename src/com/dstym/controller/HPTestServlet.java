@@ -42,7 +42,7 @@ public class HPTestServlet extends HttpServlet {
     private void listPosts(HttpServletRequest request, HttpServletResponse response) throws Exception {
         List<Post> posts = postDbHelper.getPosts();
 
-        // add users to the request
+        // add posts to the request
         request.setAttribute("POSTS", posts);
 
         // send to JSP page (view)

@@ -1,6 +1,7 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <%@page import="com.mysql.cj.util.StringUtils" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="com.dstym.model.Post" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,44 +19,7 @@
     if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     } else {
-
-        String eTitle = "";
-        String eText = "";
-
-        request.setCharacterEncoding("UTF-8");
-
-        String tEdit = request.getParameter("edit");
-        int edit = 0;
-
-        if (tEdit == null || tEdit.equals("")) {
-            // do nothing
-        } else {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
-                        "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-                String dbUsername = "root";
-                String dbPassword = "7896";
-                Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-
-                Statement st = conn.createStatement();
-
-                if (StringUtils.isStrictlyNumeric(tEdit)) {
-                    edit = Integer.parseInt(tEdit);
-                }
-
-                ResultSet rs = st.executeQuery("SELECT * FROM announcements WHERE aid = " + edit);
-
-                if (rs.next()) {
-                    eTitle = rs.getString(3);
-                    eText = rs.getString(4);
-                }
-
-                st.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        Post post = (Post) request.getAttribute("POST");
 %>
 <p class="big-text" style="text-align: center; margin: auto; color: #218527;"> Επεξεργασία Ανακοίνωσης</p>
 <br>
@@ -64,16 +28,16 @@
     <form action="edit-announcement.jsp">
         Τίτλος:
         <br>
-        <input type='text' name='title' value="<%=eTitle%>">
+        <input type='text' name='title' value="<%=post.getTitle()%>">
 
         <br><br>
 
         Περιεχόμενο:
-        <textarea cols='65' rows='10' name='text'><%=eText%></textarea>
+        <textarea cols='65' rows='10' name='text'><%=post.getTextBox()%></textarea>
 
         <br><br>
 
-        <input type="hidden" name="edit2" value="<%=edit%>">
+        <input type="hidden" name="edit2" value="<%=post.getId()%>">
 
         <button type="submit"> Επεξεργασία</button>
     </form>
