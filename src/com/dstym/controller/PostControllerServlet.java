@@ -4,6 +4,7 @@ import com.dstym.model.Post;
 import com.dstym.model.PostDbHelper;
 import com.mysql.cj.util.StringUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +19,12 @@ public class PostControllerServlet extends HttpServlet {
 
         int postId = 0;
 
+        PostDbHelper postDbHelper = new PostDbHelper();
+        Post post = null;
+
         String deleteRequest = request.getParameter("delete");
         String editRequest = request.getParameter("edit");
+        String saveEditedRequest = request.getParameter("saveEdited");
 
         if (deleteRequest != null && deleteRequest.length() != 0) {
             if (StringUtils.isStrictlyNumeric(deleteRequest)) {
@@ -27,7 +32,6 @@ public class PostControllerServlet extends HttpServlet {
             }
 
             if (postId != 0) {
-                PostDbHelper postDbHelper = new PostDbHelper();
                 postDbHelper.deletePost(postId);
             }
         } else if (editRequest != null && editRequest.length() != 0) {
@@ -36,10 +40,24 @@ public class PostControllerServlet extends HttpServlet {
             }
 
             if (postId != 0) {
-                PostDbHelper postDbHelper = new PostDbHelper();
-                Post post = postDbHelper.getPost(postId);
+                post = postDbHelper.getPost(postId);
 
                 request.setAttribute("POST", post);
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/edit-announcement.jsp");
+                dispatcher.forward(request, response);
+            }
+        } else if (saveEditedRequest != null && saveEditedRequest.length() != 0) {
+            if (StringUtils.isStrictlyNumeric(saveEditedRequest)) {
+                postId = Integer.parseInt(saveEditedRequest);
+            }
+
+            if (postId != 0) {
+                String title = request.getParameter("title");
+                String textBox = request.getParameter("text");
+
+                post = new Post(postId, title, textBox);
+                postDbHelper.updatePost(post);
             }
         }
 

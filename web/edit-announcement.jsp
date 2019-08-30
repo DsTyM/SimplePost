@@ -1,7 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" %>
-<%@page import="com.mysql.cj.util.StringUtils" %>
-<%@ page import="java.sql.*" %>
-<%@ page import="com.dstym.model.Post" %>
+<%@page import="com.dstym.model.Post" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +23,7 @@
 <br>
 
 <div class='newanounc'>
-    <form action="edit-announcement.jsp">
+    <form action="PostControllerServlet" method="post">
         Τίτλος:
         <br>
         <input type='text' name='title' value="<%=post.getTitle()%>">
@@ -37,52 +35,10 @@
 
         <br><br>
 
-        <input type="hidden" name="edit2" value="<%=post.getId()%>">
-
-        <button type="submit"> Επεξεργασία</button>
+        <button type="submit" name="saveEdited" value="<%=post.getId()%>"> Επεξεργασία</button>
     </form>
 </div>
 <%
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
-                    "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-            String dbUsername = "root";
-            String dbPassword = "7896";
-            Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-
-            Statement st = conn.createStatement();
-            PreparedStatement pst;
-
-            request.setCharacterEncoding("UTF-8");
-
-            String title = request.getParameter("title");
-            String text = request.getParameter("text");
-
-            tEdit = request.getParameter("edit2");
-
-            if (title != null && title.length() != 0 && text != null && text.length() != 0 && tEdit != null && tEdit.length() != 0) {
-                text += "\n";
-
-                String sql_text = "insert into announcements(username, title, textbox) values ('admin', ?, ?)";
-                pst = conn.prepareStatement(sql_text);
-                pst.setString(1, title); // for the first unknown value (?)
-                pst.setString(2, text);
-                pst.executeUpdate();
-
-                if (StringUtils.isStrictlyNumeric(tEdit)) {
-                    edit = Integer.parseInt(tEdit);
-                }
-
-                st.executeUpdate("delete from announcements where aid = " + edit);
-
-                st.close();
-
-                response.sendRedirect("/");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 %>
 
