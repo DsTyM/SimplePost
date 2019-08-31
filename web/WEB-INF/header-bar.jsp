@@ -3,7 +3,7 @@
         <h1 style="margin:0; padding:0; font-weight: bold;">SimplePost</h1>
     </li>
     <li class="top-bar" style="margin-left: 7%; font-size: 27px; font-weight: bold;">
-        <a style="color: dimgray;" href="/">Ανακοινώσεις</a>
+        <a style="color: dimgray;" href="/">Posts</a>
     </li>
     <li class="top-bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
         <a style="color: dimgray;" href="HomepageControllerServlet?about">About</a>
@@ -12,7 +12,7 @@
         <%
             if (session.getAttribute("username") == null) {
         %>
-        <a style='color: #218527;' href='UserControllerServlet?login-form'>Log In</a>
+        <a style='color: #218527;' href='UserControllerServlet?login-form'>Login</a>
         <%
         } else {
             String username = (String) session.getAttribute("username");

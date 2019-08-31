@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Νέα Ανακοίνωση</title>
+    <title>Edit post</title>
     <link rel="stylesheet" type="text/css" href="css/main-style.css"/>
 </head>
 <body>
@@ -19,23 +19,23 @@
     } else {
         Post post = (Post) request.getAttribute("POST");
 %>
-<p class="big-text" style="text-align: center; margin: auto; color: #218527;"> Επεξεργασία Ανακοίνωσης</p>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;"> Edit Post</p>
 <br>
 
 <div class='newanounc'>
     <form action="PostControllerServlet" method="post">
-        Τίτλος:
+        Title:
         <br>
         <input type='text' name='title' value="<%=post.getTitle()%>">
 
         <br><br>
 
-        Περιεχόμενο:
+        Content:
         <textarea cols='65' rows='10' name='text'><%=post.getTextBox()%></textarea>
 
         <br><br>
 
-        <button type="submit" name="saveEdited" value="<%=post.getId()%>"> Επεξεργασία</button>
+        <button type="submit" name="saveEdited" value="<%=post.getId()%>"> Edit</button>
     </form>
 </div>
 <%

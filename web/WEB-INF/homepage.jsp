@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ανακοινώσεις</title>
+    <title>Posts</title>
     <link rel="stylesheet" type="text/css" href="css/main-style.css"/>
 
     <style type="text/css">
@@ -41,7 +41,7 @@
 
 <br><br><br><br>
 
-<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις</p>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Posts</p>
 <br>
 
 <%
@@ -50,13 +50,13 @@
 <br><br>
 <div class="newbox" style="width: 120px">
     <form action="PostControllerServlet" method="post">
-        <button style="background-color: blue;" type="submit" name="create" value="yes">Νέα Ανακοίνωση</button>
+        <button style="background-color: blue;" type="submit" name="create" value="yes">New Post</button>
     </form>
 </div>
 
 <br><br>
 
-<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Ανακοινώσεις (Admin Mode)</p>
+<p class="big-text" style="text-align: center; margin: auto; color: #218527;">Posts (Admin Mode)</p>
 <br>
 
 <%
@@ -78,8 +78,8 @@
     <p style="font-weight: bold; display: inline;">Edit:</p>
 
     <form action="PostControllerServlet" method="post">
-        <button type="submit" name="edit" value="<%=post.getId()%>">Επεξεργασία Ανακοίνωσης</button>
-        <button type="submit" name="delete" value="<%=post.getId()%>">Διαγραφή Ανακοίνωσης</button>
+        <button type="submit" name="edit" value="<%=post.getId()%>">Edit Post</button>
+        <button type="submit" name="delete" value="<%=post.getId()%>">Delete Post</button>
     </form>
     <br>
     <%

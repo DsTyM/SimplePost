@@ -72,7 +72,7 @@ public class PostControllerServlet extends HttpServlet {
     }
 
     private void serveCreatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/new-announcement.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/create-post.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -102,7 +102,7 @@ public class PostControllerServlet extends HttpServlet {
 
             request.setAttribute("POST", post);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/edit-announcement.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/edit-post.jsp");
             dispatcher.forward(request, response);
         }
     }

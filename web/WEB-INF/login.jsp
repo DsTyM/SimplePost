@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="css/main-style.css"/>
 </head>
 <body>
@@ -29,11 +29,11 @@
         <h3>Password:
             <input type="password" name="password">
         </h3>
-        <button type="submit" name="login" value="yes">Σύνδεση</button>
+        <button type="submit" name="login" value="yes">Login</button>
         <%
             String printCouldNotLoginMessage = (String) session.getAttribute("print-could-not-login-message");
             if (printCouldNotLoginMessage != null && printCouldNotLoginMessage.equals("yes")) {
-                out.print("<h4 style = 'color: yellow;'>Λάθος στοιχεία Προσπαθήστε ξανά</h4>");
+                out.print("<h4 style = 'color: yellow;'>You where not able to log in.</h4>");
             }
         %>
     </form>
