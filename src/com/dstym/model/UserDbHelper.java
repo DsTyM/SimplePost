@@ -60,10 +60,13 @@ public class UserDbHelper {
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
 
-                rs.next();
-                String password = rs.getString("password");
+                if (rs.next()) {
+                    String password = rs.getString("password");
 
-                return password.equals(user.getPassword());
+                    return password.equals(user.getPassword());
+                }
+
+                return false;
             }
 
             return false;

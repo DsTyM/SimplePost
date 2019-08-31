@@ -20,11 +20,7 @@ public class HomepageControllerServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
 
-        try {
-            postDbHelper = new PostDbHelper();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        postDbHelper = new PostDbHelper();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +28,14 @@ public class HomepageControllerServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String about = request.getParameter("about");
+
+        if (about != null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/about.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
         try {
             listPosts(request, response);
         } catch (Exception e) {
@@ -46,7 +50,7 @@ public class HomepageControllerServlet extends HttpServlet {
         request.setAttribute("POSTS", posts);
 
         // send to JSP page (view)
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/homepage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/homepage.jsp");
         dispatcher.forward(request, response);
     }
 }

@@ -47,10 +47,12 @@ public class PostControllerServlet extends HttpServlet {
             serveEditPost(request, response, postId, postDbHelper, editRequest);
         } else if (saveEditedRequest != null && saveEditedRequest.length() != 0) {
             saveEditedPost(request, postId, postDbHelper, saveEditedRequest);
+            return;
         } else if (createRequest != null && createRequest.length() != 0) {
-            serveCreatePost(request, response, createRequest);
+            serveCreatePost(request, response);
         } else if (saveCreatedRequest != null && saveCreatedRequest.length() != 0) {
-            saveCreatedPost(request, username, postDbHelper, saveCreatedRequest);
+            saveCreatedPost(request, username, postDbHelper);
+            return;
         }
 
         response.sendRedirect("/");
@@ -60,22 +62,18 @@ public class PostControllerServlet extends HttpServlet {
 
     }
 
-    private void saveCreatedPost(HttpServletRequest request, String username, PostDbHelper postDbHelper, String saveCreatedRequest) {
+    private void saveCreatedPost(HttpServletRequest request, String username, PostDbHelper postDbHelper) {
         Post post;
-        if (saveCreatedRequest.equals("yes")) {
-            String title = request.getParameter("title");
-            String textBox = request.getParameter("text");
+        String title = request.getParameter("title");
+        String textBox = request.getParameter("text");
 
-            post = new Post(username, title, textBox);
-            postDbHelper.createPost(post);
-        }
+        post = new Post(username, title, textBox);
+        postDbHelper.createPost(post);
     }
 
-    private void serveCreatePost(HttpServletRequest request, HttpServletResponse response, String createRequest) throws ServletException, IOException {
-        if (createRequest.equals("yes")) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/new-announcement.jsp");
-            dispatcher.forward(request, response);
-        }
+    private void serveCreatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/new-announcement.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void saveEditedPost(HttpServletRequest request, int postId, PostDbHelper postDbHelper, String saveEditedRequest) {
@@ -104,7 +102,7 @@ public class PostControllerServlet extends HttpServlet {
 
             request.setAttribute("POST", post);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/edit-announcement.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/edit-announcement.jsp");
             dispatcher.forward(request, response);
         }
     }

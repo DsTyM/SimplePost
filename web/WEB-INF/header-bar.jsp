@@ -6,14 +6,16 @@
         <a style="color: dimgray;" href="/">Ανακοινώσεις</a>
     </li>
     <li class="top-bar" style="margin-left: 4%; font-size: 27px; font-weight: bold;">
-        <a style="color: dimgray;" href="about.jsp">About</a>
+        <a style="color: dimgray;" href="HomepageControllerServlet?about">About</a>
     </li>
     <li class="top-bar" style="float: right; margin-right: 15%; font-size: 20px; font-weight: bold;">
         <%
             if (session.getAttribute("username") == null) {
-                out.print("<a style='color: #218527;' href='login.jsp'>Log In</a>");
-            } else {
-                String username = (String) session.getAttribute("username");
+        %>
+        <a style='color: #218527;' href='UserControllerServlet?login-form'>Log In</a>
+        <%
+        } else {
+            String username = (String) session.getAttribute("username");
         %>
         <form action="/">
             <p style="color: #218527; margin: 0 0 0 0; word-break: normal; width: 100%">Welcome <%= username%>

@@ -23,7 +23,8 @@
 </h2>
 
 <h2 style="width: 600px; font-weight: normal; margin-left: 23%;">
-    Το SimplePost χρησιμοποιεί στο back end: Java EE (γνωστή πλέον ως Jakarta EE) μαζί με MySQL, και στο front end: HTML και CSS.
+    Το SimplePost χρησιμοποιεί στο back end: Java EE (γνωστή πλέον ως Jakarta EE) μαζί με MySQL, και στο front end: HTML
+    και CSS.
 </h2>
 </body>
 </html>
