@@ -21,7 +21,7 @@ USE `simplepostdb`;
 -- Table structure for table `announcements`
 --
 
-DROP TABLE IF EXISTS `announcements`;
+DROP TABLE IF EXISTS posts;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `announcements` (
@@ -38,10 +38,10 @@ CREATE TABLE `announcements` (
 -- Dumping data for table `announcements`
 --
 
-LOCK TABLES `announcements` WRITE;
-/*!40000 ALTER TABLE `announcements` DISABLE KEYS */;
-INSERT INTO `announcements` VALUES (1,'admin','1ος Τίτλος','Αυτή είναι μία ανακοίνωση αποθηκευμένη στην βάση δεδομένων για τις Ανακοινώσεις του TeiSteSchedule.','2019-02-13 12:01:40'),(2,'admin','2ος Τίτλος','Αυτή είναι μία δεύτερη ανακοίνωση αποθηκευμένη στην βάση δεδομένων για τις Ανακοινώσεις του TeiSteSchedule.','2019-02-13 12:01:40');
-/*!40000 ALTER TABLE `announcements` ENABLE KEYS */;
+LOCK TABLES posts WRITE;
+/*!40000 ALTER TABLE posts DISABLE KEYS */;
+INSERT INTO posts VALUES (1,'admin','1ος Τίτλος','Αυτή είναι μία ανακοίνωση αποθηκευμένη στην βάση δεδομένων για τις Ανακοινώσεις του TeiSteSchedule.','2019-02-13 12:01:40'),(2,'admin','2ος Τίτλος','Αυτή είναι μία δεύτερη ανακοίνωση αποθηκευμένη στην βάση δεδομένων για τις Ανακοινώσεις του TeiSteSchedule.','2019-02-13 12:01:40');
+/*!40000 ALTER TABLE posts ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

@@ -25,7 +25,7 @@ public class UserDbHelper {
 
                 while (rs.next()) {
                     // retrieve data from result set row
-                    int id = rs.getInt("uid");
+                    int id = rs.getInt("id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String type = rs.getString("type");

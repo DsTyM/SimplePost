@@ -45,14 +45,14 @@ public class PostControllerServlet extends HttpServlet {
             deletePost(postId, postDbHelper, deleteRequest);
         } else if (editRequest != null && editRequest.length() != 0) {
             serveEditPost(request, response, postId, postDbHelper, editRequest);
+            return;
         } else if (saveEditedRequest != null && saveEditedRequest.length() != 0) {
             saveEditedPost(request, postId, postDbHelper, saveEditedRequest);
-            return;
         } else if (createRequest != null && createRequest.length() != 0) {
             serveCreatePost(request, response);
+            return;
         } else if (saveCreatedRequest != null && saveCreatedRequest.length() != 0) {
             saveCreatedPost(request, username, postDbHelper);
-            return;
         }
 
         response.sendRedirect("/");

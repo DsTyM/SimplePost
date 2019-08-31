@@ -22,14 +22,14 @@ public class PostDbHelper {
             conn = DbHelper.getConnection();
 
             if (conn != null) {
-                String sql = "select * from announcements order by date desc";
+                String sql = "select * from posts order by date desc";
 
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
 
                 while (rs.next()) {
                     // retrieve data from result set row
-                    int id = rs.getInt("aid");
+                    int id = rs.getInt("id");
                     String username = rs.getString("username");
                     String title = rs.getString("title");
                     String textBox = rs.getString("textbox");
@@ -62,7 +62,7 @@ public class PostDbHelper {
         try {
             conn = DbHelper.getConnection();
 
-            String sql = "insert into announcements(username, title, textbox) values (?, ?, ?)";
+            String sql = "insert into posts(username, title, textbox) values (?, ?, ?)";
             if (conn != null) {
                 pst = conn.prepareStatement(sql);
             }
@@ -83,7 +83,7 @@ public class PostDbHelper {
             conn = DbHelper.getConnection();
 
             if (conn != null) {
-                String sql = "select * from announcements where aid = " + postId;
+                String sql = "select * from posts where id = " + postId;
 
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
@@ -116,7 +116,7 @@ public class PostDbHelper {
         try {
             conn = DbHelper.getConnection();
 
-            String sql = "update announcements set title = ?, textbox = ? where aid = " + post.getId();
+            String sql = "update posts set title = ?, textbox = ? where id = " + post.getId();
             if (conn != null) {
                 pst = conn.prepareStatement(sql);
             }
@@ -137,7 +137,7 @@ public class PostDbHelper {
 
             if (conn != null) {
                 st = conn.createStatement();
-                st.executeUpdate("delete from announcements where aid = " + postId);
+                st.executeUpdate("delete from posts where id = " + postId);
             }
         } catch (Exception e) {
             e.printStackTrace();
