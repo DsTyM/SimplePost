@@ -27,8 +27,10 @@ username and the password credentials of the database.<br />
 
 Database has been dumped using mysqldump and it should be imported using the file: SimplePostDB_Dump.sql
 like this:
+```bash
 create database simplepostdb;
 mysql -u username -p simplepostdb < SimplePostDB_Dump.sql
+```
 
 This application has been tested using OpenJDK 12, Apache Tomcat 9 and MySQL 8.<br />
 
