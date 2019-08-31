@@ -16,7 +16,7 @@ View (JSP files) functionality is inside web/WEB-INF folder (so that the client 
 Controller (Servlets) functionality is inside src/com/dstym/controller folder (com.dstym.controller) is the package.
 Model (Simple Java Classes) functionality is inside src/com/dstym/model folder (com.dstym.model) is the package.
 
-// here show the image
+<!-- here show the image -->
 
 You need to change the database credentials on src/com/dstym/model/DbHelper.java file
 dbUrl is where you give the url of connection to the database, dbUsername and dbPassword is the 
