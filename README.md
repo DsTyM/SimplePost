@@ -1,6 +1,6 @@
 # SimplePost
 
-SimplePost is a simple post management system.<br />
+SimplePost is a web simple post management system.<br />
 It is actually a simple CRUD web application implemented in Java EE (now called Jakarta EE) using 
 MVC Architecture.<br />
 It uses JSP files as the View, it uses Servlets as the Controller and it uses simple Java Classes as the Model.<br />
