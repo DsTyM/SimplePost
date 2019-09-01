@@ -50,23 +50,12 @@ public class UserControllerServlet extends HttpServlet {
         Boolean validatedUser = userDbHelper.validateUser(user);
 
         if (validatedUser) {
-            resetSuccessfullyLoggedIn(request);
             request.getSession(false).setAttribute("username", username);
             response.sendRedirect("/");
         } else {
             request.getSession(false).setAttribute("print-could-not-login-message", "yes");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
             dispatcher.forward(request, response);
-        }
-    }
-
-    private void resetSuccessfullyLoggedIn(HttpServletRequest request) {
-        String printCouldNotLoginMessage;
-        if (request.getSession(false).getAttribute("print-could-not-login-message") != null) {
-            printCouldNotLoginMessage = (String) request.getSession(false).getAttribute("print-could-not-login-message");
-            if (printCouldNotLoginMessage.equals("no")) {
-                request.getSession(false).setAttribute("print-could-not-login-message", "no");
-            }
         }
     }
 }

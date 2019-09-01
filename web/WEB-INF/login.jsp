@@ -34,6 +34,7 @@
             String printCouldNotLoginMessage = (String) session.getAttribute("print-could-not-login-message");
             if (printCouldNotLoginMessage != null && printCouldNotLoginMessage.equals("yes")) {
                 out.print("<h4 style = 'color: yellow;'>You where not able to log in.</h4>");
+                request.getSession(false).setAttribute("print-could-not-login-message", "no");
             }
         %>
     </form>
