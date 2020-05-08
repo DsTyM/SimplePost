@@ -8,8 +8,8 @@ public class DbHelper {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dbUrl = "jdbc:mysql://localhost:3306/simplepostdb?useUnicode=true&useJDBCCompliantTimezoneShift=true" +
                     "&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-            String dbUsername = "root";
-            String dbPassword = "";
+            String dbUsername = "developer";
+            String dbPassword = "developer";
 
             return DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (Exception e) {
