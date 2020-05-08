@@ -36,7 +36,7 @@ public class UserControllerServlet extends HttpServlet {
         String loginFormRequest = request.getParameter("login-form");
 
         if (loginFormRequest != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -54,7 +54,7 @@ public class UserControllerServlet extends HttpServlet {
             response.sendRedirect("/");
         } else {
             request.getSession(false).setAttribute("print-could-not-login-message", "yes");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
             dispatcher.forward(request, response);
         }
     }

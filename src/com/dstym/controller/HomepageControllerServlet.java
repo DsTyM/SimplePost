@@ -23,7 +23,7 @@ public class HomepageControllerServlet extends HttpServlet {
         postDbHelper = new PostDbHelper();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
     }
 
@@ -31,7 +31,7 @@ public class HomepageControllerServlet extends HttpServlet {
         String about = request.getParameter("about");
 
         if (about != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/about.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/about.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -50,7 +50,7 @@ public class HomepageControllerServlet extends HttpServlet {
         request.setAttribute("POSTS", posts);
 
         // send to JSP page (view)
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/homepage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/homepage.jsp");
         dispatcher.forward(request, response);
     }
 }
