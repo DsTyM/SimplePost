@@ -26,7 +26,7 @@ View (JSP files) functionality is inside web/WEB-INF/view folder.
 Controller (Servlets) functionality is inside src/com/dstym/controller folder (com.dstym.controller) 
 is the package.
 <br />
-Model (Simple Java Classes) functionality is inside src/com/dstym/model folder (com.dstym.model) is the package.
+Model (POJO files) functionality is inside src/com/dstym/model folder (com.dstym.model) is the package.
 <br />
 
 <!-- here show the image -->
